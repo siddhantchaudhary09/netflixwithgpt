@@ -28,7 +28,7 @@ const Loginpage = () => {
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="bg-opacity-[0.85] bg-black absolute p-12 my-36 w-3/12 mx-auto right-0 left-0 text-white rounded-md"
+          className="bg-opacity-[0.85] bg-black absolute p-12 my-36 w-10/12 sm:w-3/12   mx-auto right-0 left-0 text-white rounded-md"
         >
           <h1 className="font-bold text-3xl py-3 m-2">
             {issignedin ? "Sign In" : "Sign Up"}
