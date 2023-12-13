@@ -7,7 +7,7 @@ const Loginpage = () => {
   };
   return (
     <div>
-      <div className="bg-gradient-to-b from-black absolute z-10">
+      <div className="bg-gradient-to-b from-black absolute z-10 ">
         <img
           className="w-52 p-2 ml-20 "
           alt="logo"
@@ -17,7 +17,7 @@ const Loginpage = () => {
 
       <div>
         <img
-          className=" absolute"
+          className=" absolute w-[calc(100dvw)] h-[calc(100dvh)]  sm:w-full sm:h-full"
           alt="bg-img"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg"
         />
