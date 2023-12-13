@@ -1,5 +1,10 @@
 import React, { useRef, useState } from "react";
 import { validate } from "../utils/Validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Loginpage = () => {
   const [issignedin, setissignedin] = useState(true);
@@ -13,6 +18,35 @@ const Loginpage = () => {
   const handlesignclicked = () => {
     const message = validate(email.current.value, password.current.value);
     seterrormessage(message);
+    if (message) return;
+
+    if (!issignedin) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          seterrormessage("Try again later");
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          seterrormessage("User not registered");
+        });
+    }
   };
   const handlesignin = () => {
     setissignedin(!issignedin);
