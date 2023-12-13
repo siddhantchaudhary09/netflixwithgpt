@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import Loginpage from "./Loginpage";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  useNavigate,
+} from "react-router-dom";
 import Browse from "./Browse";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";

@@ -5,9 +5,11 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Loginpage = () => {
   const [issignedin, setissignedin] = useState(true);
+  const navigate = useNavigate();
 
   const [errormessage, seterrormessage] = useState();
 
@@ -29,6 +31,7 @@ const Loginpage = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           seterrormessage("Try again later");
@@ -42,6 +45,7 @@ const Loginpage = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           seterrormessage("User not registered");
