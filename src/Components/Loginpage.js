@@ -1,17 +1,21 @@
 import React, { useRef, useState } from "react";
 import { validate } from "../utils/Validate";
+import { updateProfile } from "firebase/auth";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-
-...
 import { useNavigate } from "react-router-dom";
+import Head from "./Head";
+import { addUser } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
 
 const Loginpage = () => {
   const [issignedin, setissignedin] = useState(true);
   const navigate = useNavigate();
+  const dispacth = useDispatch();
 
   const [errormessage, seterrormessage] = useState();
 
@@ -28,15 +32,32 @@ const Loginpage = () => {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
+        name.current.value
       )
         .then((userCredential) => {
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
 
-          navigate("/browse");
+              const { uid, email, displayName } = auth.currentUser;
+              dispacth(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
         })
         .catch((error) => {
-          seterrormessage("Try again later");
+          seterrormessage(error.message);
         });
     } else {
       signInWithEmailAndPassword(
@@ -46,6 +67,7 @@ const Loginpage = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
+
           navigate("/browse");
         })
         .catch((error) => {
@@ -58,14 +80,7 @@ const Loginpage = () => {
   };
   return (
     <div>
-      <div className="bg-gradient-to-b from-black absolute z-10 ">
-        <img
-          className="w-52 p-2 ml-20 "
-          alt="logo"
-          src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-        />
-      </div>
-
+      <Head />
       <div>
         <img
           className=" absolute w-[calc(100dvw)] h-[calc(100dvh)]  "
@@ -87,7 +102,7 @@ const Loginpage = () => {
 
           {!issignedin && (
             <input
-              ref={null}
+              ref={name}
               type="text"
               placeholder="Name"
               className="bg-gray-700 m-2 p-3  w-full rounded-sm "

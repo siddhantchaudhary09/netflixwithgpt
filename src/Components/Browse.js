@@ -1,7 +1,12 @@
 import React from "react";
+import Head from "./Head";
 
 const Browse = () => {
-  return <div>Browse</div>;
+  return (
+    <div className="">
+      <Head />
+    </div>
+  );
 };
 
 export default Browse;
