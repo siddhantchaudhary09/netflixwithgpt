@@ -13,7 +13,6 @@ const useTrendingmovies = () => {
     const json = await data.json();
     const movielist = json.results;
 
-    console.log(movielist);
     dispatch(addTrendingmovie(movielist));
   };
 
