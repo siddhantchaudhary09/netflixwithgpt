@@ -7,14 +7,14 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+
 import Head from "./Head";
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
 
 const Loginpage = () => {
   const [issignedin, setissignedin] = useState(true);
-  const navigate = useNavigate();
+
   const dispacth = useDispatch();
 
   const [errormessage, seterrormessage] = useState();
@@ -49,7 +49,6 @@ const Loginpage = () => {
               dispacth(
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -65,11 +64,7 @@ const Loginpage = () => {
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
-          const user = userCredential.user;
-
-          navigate("/browse");
-        })
+        .then((userCredential) => {})
         .catch((error) => {
           seterrormessage("User not registered");
         });

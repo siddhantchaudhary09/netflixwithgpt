@@ -1,38 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { removeUser } from "../utils/userSlice";
+import { addUser, removeUser } from "../utils/userSlice";
+import { Logo, User_logo } from "../utils/constants";
 
 const Head = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispacth = useDispatch();
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispacth(addUser({ uid: uid, email: email, displayName: displayName }));
+        navigate("/browse");
+      } else {
+        navigate("/");
+        dispacth(removeUser());
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   const handlesignoutbtn = () => {
     signOut(auth)
-      .then(() => {
-        navigate("/");
-      })
+      .then(() => {})
       .catch((error) => {});
   };
   return (
     <div className="bg-gradient-to-b from-black absolute z-10 flex justify-between  w-screen">
-      <img
-        className="w-52 p-2 ml-20 "
-        alt="logo"
-        src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-      />
+      <img className="w-52 p-2 ml-20 " alt="logo" src={Logo} />
 
       {user && (
         <div className="flex items-center p-2 ">
-          <img
-            className="w-20 p-2"
-            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-          />
+          <span className="rounded-lg">
+            <img className="w-20 p-2 " alt="user-logo" src={User_logo} />
+          </span>
           <button
-            className="text-white font-bold text-xl"
+            className="text-white font-bold text-xl "
             onClick={handlesignoutbtn}
           >
             (Sign out)
