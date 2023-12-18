@@ -13,3 +13,13 @@ export const Api_Options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OWExOWI3OTg2NTY2OTVjYTgzYTYwM2ZiNDkwM2RiNSIsInN1YiI6IjY1N2VmYjk2OTA0ZjZkMDcyNDdmYTUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pMY_9ko1pRI7ACHUV54mhvwCk591FsEODwj57LVkN8c",
   },
 };
+
+export function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+export function isInt32(value) {
+  return (
+    Number.isSafeInteger(value) && value >= -(2 ** 31) && value <= 2 ** 31 - 1
+  );
+}
