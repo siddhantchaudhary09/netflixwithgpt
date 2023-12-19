@@ -8,7 +8,7 @@ const Secondarycont = () => {
 
   return (
     <div className="bg-black p-3">
-      <div className="-mt-32 relative ">
+      <div className="sm:-mt-32 relative ">
         <Movielist title={"Now Playing"} movies={movies.Nowplayingmovie} />
         <Movielist title={"Trending"} movies={movies.Trendingmovie} />
         <Movielist title={"Popular"} movies={movies.Popularmovie} />

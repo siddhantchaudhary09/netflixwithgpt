@@ -38,12 +38,16 @@ const Head = () => {
       <img className="w-52 p-2 ml-20 " alt="logo" src={Logo} />
 
       {user && (
-        <div className="flex items-center p-2 ">
+        <div className="sm:flex   items-center p-2 ">
           <span className="rounded-lg">
-            <img className="w-20 p-2 " alt="user-logo" src={User_logo} />
+            <img
+              className="w-10 sm:w-20 ml-8   sm:p-2 "
+              alt="user-logo"
+              src={User_logo}
+            />
           </span>
           <button
-            className="text-white font-bold text-xl mr-4 "
+            className="text-white font-bold  sm:text-xl mr-4 "
             onClick={handlesignoutbtn}
           >
             (Sign out)
