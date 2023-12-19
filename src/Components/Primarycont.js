@@ -5,15 +5,15 @@ import Trailer from "./Trailer";
 import Videotitle from "./Videotitle";
 
 const Primarycont = () => {
-  const upmovies = useSelector((store) => store.movie.Trendingmovie);
+  const upmovies = useSelector((store) => store.movie.Nowplayingmovie);
   const Trailerindex = getRandomInt(15);
   if (!upmovies) return null;
 
   const { title, id, overview } = upmovies[Trailerindex];
 
   return (
-    <div className="relative">
-      <Videotitle title={title} />
+    <div className="relative overflow-hidden">
+      <Videotitle title={title} desc={overview} />
       <Trailer movieid={id} />
     </div>
   );

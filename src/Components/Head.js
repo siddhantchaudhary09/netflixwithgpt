@@ -34,7 +34,7 @@ const Head = () => {
       .catch((error) => {});
   };
   return (
-    <div className="bg-gradient-to-b from-black absolute z-10 flex justify-between  w-screen">
+    <div className="bg-gradient-to-b from-black  z-10 flex justify-between fixed w-screen ">
       <img className="w-52 p-2 ml-20 " alt="logo" src={Logo} />
 
       {user && (
@@ -43,7 +43,7 @@ const Head = () => {
             <img className="w-20 p-2 " alt="user-logo" src={User_logo} />
           </span>
           <button
-            className="text-white font-bold text-xl "
+            className="text-white font-bold text-xl mr-4 "
             onClick={handlesignoutbtn}
           >
             (Sign out)

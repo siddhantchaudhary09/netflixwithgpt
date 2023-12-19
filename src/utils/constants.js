@@ -23,3 +23,5 @@ export function isInt32(value) {
     Number.isSafeInteger(value) && value >= -(2 ** 31) && value <= 2 ** 31 - 1
   );
 }
+
+export const IMG_cdn = "https://image.tmdb.org/t/p/w500";
