@@ -35,7 +35,7 @@ const Head = () => {
   };
   return (
     <div className="bg-gradient-to-b from-black  z-10 flex justify-between fixed w-screen ">
-      <img className="w-52 p-2 ml-20 " alt="logo" src={Logo} />
+      <img className=" w-32  sm:w-52  p-2 sm:ml-20 " alt="logo" src={Logo} />
 
       {user && (
         <div className="sm:flex   items-center p-2 ">
@@ -47,7 +47,7 @@ const Head = () => {
             />
           </span>
           <button
-            className="text-white font-bold  sm:text-xl mr-4 "
+            className="text-white font-bold text-sm sm:text-xl ml-5 sm:ml-0 sm:mr-4 "
             onClick={handlesignoutbtn}
           >
             (Sign out)

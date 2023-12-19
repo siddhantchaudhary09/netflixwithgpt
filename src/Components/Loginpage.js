@@ -76,9 +76,9 @@ const Loginpage = () => {
   return (
     <div>
       <Head />
-      <div>
+      <div className="relative">
         <img
-          className=" absolute w-[calc(100dvw)] h-[calc(100dvh)]  "
+          className="  absolute w-[calc(100dvw)] h-[calc(100dvh)]   "
           alt="bg-img"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg"
         />
@@ -89,7 +89,7 @@ const Loginpage = () => {
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="sm:bg-opacity-[0.85] bg-black absolute p-12 my-36 w-[calc(100dvw)] h-[calc(100dvh)] sm:w-3/12 sm:h-auto  mx-auto right-0 left-0 text-white rounded-md"
+          className="sm:bg-opacity-[0.85] bg-black z-10 absolute p-12 my-36 w-[calc(100dvw)] h-[calc(100dvh)] sm:w-3/12 sm:h-auto  mx-auto right-0 left-0 text-white rounded-md"
         >
           <h1 className="font-bold text-3xl py-3 m-2">
             {issignedin ? "Sign In" : "Sign Up"}

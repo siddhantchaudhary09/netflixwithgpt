@@ -12,9 +12,9 @@ const Trailer = ({ movieid }) => {
 
   return (
     <div>
-      <div className=" w-[calc(100dvw)]">
+      <div className="  w-[calc(100dvw)]">
         <iframe
-          className=" w-[calc(100dvw)]  aspect-video"
+          className=" w-[calc(100dvw)]  aspect-[4/3] sm:aspect-video"
           title="video"
           src={
             "https://www.youtube.com/embed/" +
