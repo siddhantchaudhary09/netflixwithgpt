@@ -5,7 +5,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { addUser, removeUser } from "../utils/userSlice";
 import { Logo, User_logo } from "../utils/constants";
-import { addgptview } from "../utils/Gptslice";
+import { addgptview, removemovies, removenames } from "../utils/Gptslice";
 
 const Head = () => {
   const user = useSelector((store) => store.user);
@@ -14,6 +14,8 @@ const Head = () => {
 
   const toggleView = () => {
     dispacth(addgptview());
+    dispacth(removemovies());
+    dispacth(removenames());
   };
 
   useEffect(() => {
