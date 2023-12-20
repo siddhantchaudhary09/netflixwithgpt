@@ -29,4 +29,4 @@ export const IMG_cdn = "https://image.tmdb.org/t/p/w500";
 export const BG_IMG =
   "https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg";
 
-export const OPENAI_KEY = "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";
+export const OPENAI_KEY = "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";
