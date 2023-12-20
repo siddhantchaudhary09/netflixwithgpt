@@ -5,11 +5,16 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { addUser, removeUser } from "../utils/userSlice";
 import { Logo, User_logo } from "../utils/constants";
+import { addgptview } from "../utils/Gptslice";
 
 const Head = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispacth = useDispatch();
+
+  const toggleView = () => {
+    dispacth(addgptview());
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -39,6 +44,12 @@ const Head = () => {
 
       {user && (
         <div className="sm:flex   items-center p-2 ">
+          <button
+            className="bg-purple-500 p-2 rounded-lg font-semibold text-white"
+            onClick={toggleView}
+          >
+            Gpt Search
+          </button>
           <span className="rounded-lg">
             <img
               className="w-10 sm:w-20 ml-8   sm:p-2 "

@@ -12,7 +12,7 @@ const Primarycont = () => {
   const { title, id, overview } = upmovies[Trailerindex];
 
   return (
-    <div className="relative overflow-hidden aspect-video">
+    <div className=" overflow-hidden aspect-video">
       <Videotitle title={title} desc={overview} />
       <Trailer movieid={id} />
     </div>
