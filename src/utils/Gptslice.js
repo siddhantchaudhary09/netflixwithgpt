@@ -23,6 +23,9 @@ const Gptslice = createSlice({
     removenames: (state) => {
       state.movienames = null;
     },
+    removegptview: (state) => {
+      state.showgptsearch = false;
+    },
   },
 });
 
@@ -33,4 +36,5 @@ export const {
   addmovienames,
   removemovies,
   removenames,
+  removegptview,
 } = Gptslice.actions;
