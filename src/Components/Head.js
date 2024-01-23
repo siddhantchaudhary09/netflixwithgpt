@@ -5,7 +5,12 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { addUser, removeUser } from "../utils/userSlice";
 import { Logo, User_logo } from "../utils/constants";
-import { addgptview, removemovies, removenames } from "../utils/Gptslice";
+import {
+  addgptview,
+  removegptview,
+  removemovies,
+  removenames,
+} from "../utils/Gptslice";
 
 const Head = () => {
   const user = useSelector((store) => store.user);
@@ -38,7 +43,9 @@ const Head = () => {
   const handlesignoutbtn = () => {
     signOut(auth)
       .then(() => {})
-      .catch((error) => {});
+      .catch((error) => {
+        dispacth(removegptview());
+      });
   };
   return (
     <div className="bg-gradient-to-b from-black  z-10 flex justify-between fixed w-screen ">
