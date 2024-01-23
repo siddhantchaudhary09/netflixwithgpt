@@ -42,9 +42,11 @@ const Head = () => {
 
   const handlesignoutbtn = () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+         dispacth(removegptview());
+      })
       .catch((error) => {
-        dispacth(removegptview());
+       
       });
   };
   return (
